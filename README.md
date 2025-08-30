@@ -30,7 +30,7 @@ A portfolio-ready starter that goes beyond CRUD:
 > **Prereqs:** Docker (for MySQL), Python 3.11  
 > **Optional:** Use a virtual environment.
 
-```
+```bash
 # Clone & setup
 git clone https://github.com/ardityaapusing/mysql-analytics-starter.git
 cd mysql-analytics-starter
@@ -45,11 +45,15 @@ mysql -h 127.0.0.1 -P 3306 -uroot -psecret < sql/seed.sql
 
 # (Optional) Run the dashboard
 streamlit run app/streamlit_app.py
+```
 
 **Run all analytics queries**
-```
+```bash
 mysql -h 127.0.0.1 -P 3306 -uroot -psecret < sql/analytics.sql
 ```
+
+---
+
 ## Project Structure
 ```
 mysql-analytics-starter/
@@ -92,7 +96,7 @@ ORDER BY rnk;
 
 ### 2) Data-quality checks
 Validate phone patterns and detect duplicate IDs.
-```
+```sql
 -- Invalid phone patterns
 SELECT * FROM tb_mahasiswa_brm
 WHERE NOT (no_hp REGEXP '^[0-9+]{8,20}$');
@@ -142,7 +146,10 @@ _(Clickable preview can be added later after you record a demo.)_
 Replace placeholders after executing `sql/analytics.sql`.
 
 - **Top programs:** `Program_A` (#1 with **N1** records) and `Program_B` (#2 with **N2**).  
-- **Data quality:** invalid phone rate **X%**; duplicate `stambuk`: **D** records flag
+- **Data quality:** invalid phone rate **X%**; duplicate `stambuk`: **D** records **flagged**.  
+- **Growth:** highest month **YYYY-MM** with **M** new records; steady MoM trend overall.
+
+---
 
 ## Limitations & Next Steps
 - Add authentication & activity logs for CRUD.  
